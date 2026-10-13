@@ -1,85 +1,86 @@
-﻿# Measure Twice, Cut Once
+# Measure Twice, Cut Once
 
-**A practitioner's framework for two-agent AI collaboration**
+Articles and companion materials from David Todd's evolving work with AI coding agents, multi-provider collaboration, shared memory, and human-directed software development.
 
-This repository contains workflow documents, configuration files, examples, and articles from a five-week experiment in using two AI coding agents — Claude Code (Anthropic) and Codex (OpenAI) — to collaboratively develop, implement, and verify software.
+## Published Site
 
-The core idea: two agents with different strengths review the same specification and catch different problems. A human director makes all decisions. Only when all three agree does implementation begin.
+The current landing page is published with GitHub Pages:
 
----
+**[Measure Twice, Cut Once](https://thegamewiz.github.io/Measure-Twice-Cut-Once/index.html)**
 
-## Read the Article
+The site is the best starting point. It presents the articles as a numbered reading sequence, explains their historical context, and links to the projects that grew out of the work.
 
-**[`Articles/I-Learned-a-Valuable-Lesson.md`](Articles/I-Learned-a-Valuable-Lesson.md)**
+GitHub Pages publishes the contents of [`docs/`](docs/) from the `main` branch. The landing page source is [`docs/index.html`](docs/index.html).
 
-The full account — from zero AI experience to a working multi-agent consensus workflow. Covers the learning curve, what AI gets wrong about code, context management, workflow documents as programs, the two-agent approach, and practical setup instructions.
+## The Article Series
 
----
+Read chronologically to follow the development of the workflow:
 
-## What's Here
+1. **[Two Tabs and a Log File](Articles/Two-Tabs-and-a-Log-File.md)**
+   The simplest practical technique: two agent windows, one shared Markdown record, and a human director coordinating the work.
 
-### Workflows
+2. **[Two Agents, One Memory](Articles/Two-Agents-One-Memory.md)**
+   The first shared-memory architecture, created to preserve common project context across agents and sessions.
 
-| File | Description |
-|------|-------------|
-| [Consensus-Workflow.md](Workflows/Consensus-Workflow.md) | Director-supervised workflow with Design, Implement, and Test phases. Both agents communicate through a shared prompt file with structured handoffs. |
-| [Agent-Collaboration.md](Workflows/Agent-Collaboration.md) | Autonomous mode — two agents iterate on a spec without Director involvement until they reach consensus. |
+3. **[I Learned a Valuable Lesson. I Don't Think You've Learned Anything.](Articles/I-Learned-a-Valuable-Lesson.md)**
+   The longer account of moving from early experiments to a repeatable, director-led development framework.
 
-### Configuration
+4. **[Don't Make Me Come Back There](Articles/Dont-Make-Me-Come-Back-There.md)**
+   The original case for M-PACT and a durable, provider-neutral record that survives session boundaries.
 
-| File | Description |
-|------|-------------|
-| [Config-Insert.md](Config/Config-Insert.md) | Configuration block to paste into both CLAUDE.md and AGENTS.md. Defines startup behavior, role assignments, and polling rules. |
+5. **[Don't Make Me Come Back There, Again!](Articles/Dont-Make-Me-Come-Back-There-Again.md)**
+   M-PACT Gen Two, including anchored handoffs, task flow, context recovery, and the later shape of multi-provider collaboration.
 
-### Examples
+The landing page displays the newest article first, but labels every card with its article number so the reading order remains explicit.
 
-| File | Description |
-|------|-------------|
-| [WordLabelManager-Refactor.md](Examples/WordLabelManager-Refactor.md) | Complete consensus workflow example — eliminated 15 arrays and 5 legacy collections from a broker class. Includes full iteration log. |
-| [RenderSortSystem-DirtyArrayElim.md](Examples/RenderSortSystem-DirtyArrayElim.md) | Agent collaboration into consensus workflow — identified ~605 KB of waste in oversized cache arrays. |
-| [Shared-Memory-Collaboration-Log.md](Examples/Shared-Memory-Collaboration-Log.md) | The design conversation between Claude and Codex that produced the shared memory system. A real-world example of the two-tabs technique described in the companion article. |
+## Historical Context
 
-### Memory System
+This repository is also a historical record. The articles and their companion files describe the tools, models, agent behavior, and working practices in use when each piece was written.
 
-| File | Description |
-|------|-------------|
-| [Shared-Agent-Memory-Bootstrap-Kit.md](Memory/Shared-Agent-Memory-Bootstrap-Kit.md) | Hand it to an agent and it builds the entire shared memory system. Project-agnostic. |
+The ideas and progression remain useful, but specific setup steps, model capabilities, configuration files, and agent behavior may no longer match current systems or the way David works today. Older materials are preserved rather than silently rewritten into current guidance.
 
-### Companion Articles
+For current software and installation information, use the project links below instead of treating the older workflow files as maintained instructions.
 
-| File | Description |
-|------|-------------|
-| [Two-Agents-One-Memory.md](Articles/Two-Agents-One-Memory.md) | Unifying two agents' separate memory systems into a single shared architecture. |
-| [Two-Tabs-and-a-Log-File.md](Articles/Two-Tabs-and-a-Log-File.md) | The simplest way to start — one prompt, one shared file, no infrastructure needed. |
+## Repository Map
 
----
+| Path | Purpose |
+|------|---------|
+| [`docs/index.html`](docs/index.html) | Current GitHub Pages landing page. |
+| [`docs/Articles/`](docs/Articles/) | Published HTML versions of the five articles. |
+| [`Articles/`](Articles/) | Markdown versions of the article series. |
+| [`Workflows/`](Workflows/) | Earlier consensus and agent-collaboration workflow documents. |
+| [`Config/`](Config/) | Historical configuration material used with the earlier workflows. |
+| [`Examples/`](Examples/) | Worked examples and collaboration records from the original experiments. |
+| [`Memory/`](Memory/) | The original shared-agent-memory bootstrap material that preceded M-PACT. |
 
-## Quick Start
+## Current Projects
 
-1. Place `Consensus-Workflow.md` and `Agent-Collaboration.md` in your project root.
-2. Add the contents of `Config-Insert.md` to both your `CLAUDE.md` and `AGENTS.md` files.
-3. Create a prompt file describing what you want to build.
-4. In both agent windows, type: `Start Consensus Workflow using: [path to your prompt file]`
-5. Or, for autonomous spec refinement: `Start Agent Collaboration using: [path to your prompt file]`
+### ConflabCode
 
-See [Getting Started](Articles/I-Learned-a-Valuable-Lesson.md#section-10-getting-started) in the main article for full setup instructions.
+A VS Code extension for directed multi-agent software work using defined tasks, stages, roles, shared documents, and checkpoints.
 
----
+[Visit Conflab.ai](https://conflab.ai/conflab-code.html)
+
+### Conflab
+
+A directed multi-agent conversation workspace for running panels across multiple AI providers with persistent summaries, logs, personas, and artifacts.
+
+[Visit Conflab.ai](https://conflab.ai) | [GitHub repository](https://github.com/TheGameWiz/Conflab)
+
+### M-PACT Gen Two
+
+The Multi-Provider Agent Context Toolkit gives compatible local coding agents a shared system for durable rules, task state, handoffs, decisions, and historical context across sessions.
+
+[GitHub repository](https://github.com/TheGameWiz/m-pact) | [User's guide](https://github.com/TheGameWiz/m-pact/blob/main/docs/USER_GUIDE.md) | [Quick reference](https://github.com/TheGameWiz/m-pact/blob/main/docs/USER_GUIDE_QUICK_REFERENCE.md)
 
 ## About
 
-Built by David Todd — 50+ years of game programming, 5 weeks of AI. These workflows were developed and tested on a Unity 6.2 project but are not Unity-specific. They should work with any development environment and language.
-
-The workflow documents are provided as-is. They instruct AI agents to execute bash commands within your project directory. Review them before use. See the [Important Notice](Articles/I-Learned-a-Valuable-Lesson.md#important-notice) for full details.
-
----
+David Todd is a longtime game programmer documenting his practical experience directing AI-assisted software work. The material in this repository grew from real development projects and records what worked, what failed, and how the workflow changed over time.
 
 ## License
 
-Except where otherwise noted, this repository is licensed under
-**Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**.
+Except where otherwise noted, this repository is licensed under **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**.
 
 Copyright (c) 2026 David Todd.
 
 See [LICENSE](LICENSE) and [NOTICE](NOTICE) for details and attribution guidance.
-
